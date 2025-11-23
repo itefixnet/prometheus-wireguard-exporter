@@ -116,6 +116,7 @@
             "excludeByName": {
               "Time": true,
               "__name__": true,
+              "instance": true,
               "job": true
             },
             "includeByName": {},
@@ -218,6 +219,7 @@
             "excludeByName": {
               "Time": true,
               "__name__": true,
+              "instance": true,
               "job": true
             },
             "includeByName": {},
@@ -320,6 +322,7 @@
             "excludeByName": {
               "Time": true,
               "__name__": true,
+              "instance": true,
               "job": true
             },
             "includeByName": {},

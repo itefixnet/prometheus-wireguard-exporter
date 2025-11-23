@@ -45,6 +45,19 @@ export WIREGUARD_DOCKER_CONTAINER=wireguard
 export WIREGUARD_DOCKER_CONTAINER=myproject_wireguard_1
 ```
 
+### WG-Easy Container
+
+```bash
+# WG-Easy container name
+export WIREGUARD_DOCKER_CONTAINER=wg-easy
+
+# Or if using docker-compose with project prefix
+export WIREGUARD_DOCKER_CONTAINER=myproject_wg-easy_1
+
+# Test connectivity
+./wireguard-exporter.sh test
+```
+
 ### Custom WireGuard Container
 
 ```bash

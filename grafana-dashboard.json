@@ -358,7 +358,7 @@
           "refId": "A"
         }
       ],
-      "title": "Interface Configuration",
+      "title": "Interface Port",
       "transformations": [
         {
           "id": "joinByField",

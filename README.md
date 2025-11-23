@@ -1,3 +1,5 @@
+![Wireguard Grafana Dashboard](grafana-dashboard-wireguard.png)
+
 # WireGuard Prometheus Exporter
 
 A lightweight, bash-based Prometheus exporter for WireGuard VPN statistics. This exporter uses only bash and socat to provide comprehensive WireGuard metrics for monitoring with Prometheus and Grafana.

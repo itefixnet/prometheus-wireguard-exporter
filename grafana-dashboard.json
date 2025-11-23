@@ -147,7 +147,7 @@
       },
       "id": 1,
       "options": {
-        "cellHeight": "md",
+        "cellHeight": "lg",
         "footer": {
           "countRows": false,
           "fields": "",

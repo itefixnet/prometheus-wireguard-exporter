@@ -64,7 +64,6 @@ For production deployment, install as a system service:
 # Create user and directories
 sudo useradd -r -s /bin/false wireguard-exporter
 sudo mkdir -p /opt/wireguard-exporter
-sudo mkdir -p /var/lib/wireguard-exporter
 
 # Copy files
 sudo cp *.sh /opt/wireguard-exporter/
@@ -74,7 +73,6 @@ sudo cp wireguard-exporter.service /etc/systemd/system/
 
 # Set permissions
 sudo chown -R wireguard-exporter:wireguard-exporter /opt/wireguard-exporter
-sudo chown -R wireguard-exporter:wireguard-exporter /var/lib/wireguard-exporter
 sudo chmod +x /opt/wireguard-exporter/*.sh
 
 # Enable and start service

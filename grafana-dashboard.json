@@ -101,9 +101,9 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "label_replace(wireguard_interface_up{instance=~\"$instance\", interface=~\"$interface\"}, \"port\", \"$1\", \"__name__\", \".*\") * on(instance, interface) group_left(listen_port) label_replace(wireguard_interface_listen_port, \"port\", \"$1\", \"listen_port\", \"(.*)\")",
+          "expr": "wireguard_interface_up{instance=~\"$instance\", interface=~\"$interface\"}",
           "instant": true,
-          "legendFormat": "{{server_name}} / {{interface}} / {{port}}",
+          "legendFormat": "{{server_name}} / {{interface}} / {{listen_port}}",
           "range": false,
           "refId": "A"
         }

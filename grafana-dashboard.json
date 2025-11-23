@@ -357,7 +357,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "irate(wireguard_peer_receive_bytes_total{interface=~\"$interface\"}[5m])",
+          "expr": "irate(wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}[5m])",
           "legendFormat": "{{public_key}}",
           "range": true,
           "refId": "A"
@@ -450,7 +450,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "irate(wireguard_peer_transmit_bytes_total{interface=~\"$interface\"}[5m])",
+          "expr": "irate(wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}[5m])",
           "legendFormat": "{{public_key}}",
           "range": true,
           "refId": "A"
@@ -542,7 +542,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "wireguard_peer_receive_bytes_total{interface=~\"$interface\"}",
+          "expr": "wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}",
           "legendFormat": "{{public_key}}",
           "range": true,
           "refId": "A"
@@ -634,7 +634,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "wireguard_peer_transmit_bytes_total{interface=~\"$interface\"}",
+          "expr": "wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}",
           "legendFormat": "{{public_key}}",
           "range": true,
           "refId": "A"

@@ -312,7 +312,7 @@
         "showHeader": true,
         "sortBy": [
           {
-            "desc": true,
+            "desc": false,
             "displayName": "Time Since Handshake"
           }
         ]

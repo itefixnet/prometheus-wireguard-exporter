@@ -111,22 +111,44 @@
       "title": "Interface Status",
       "transformations": [
         {
+          "id": "joinByField",
+          "options": {
+            "byField": "interface",
+            "mode": "outer"
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "__name__": true,
               "instance": true,
+              "interface": true,
               "job": true
             },
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
               "Value": "Status",
-              "instance": "Instance",
-              "interface": "Interface",
-              "server_name": "Server"
+              "server_name": "Interface"
             }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Interface",
+            "binary": {
+              "left": "server_name",
+              "operator": "+",
+              "right": "interface"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
           }
         }
       ],
@@ -214,22 +236,44 @@
       "title": "Peers per Interface",
       "transformations": [
         {
+          "id": "joinByField",
+          "options": {
+            "byField": "interface",
+            "mode": "outer"
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "__name__": true,
               "instance": true,
+              "interface": true,
               "job": true
             },
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
               "Value": "Peers",
-              "instance": "Instance",
-              "interface": "Interface",
-              "server_name": "Server"
+              "server_name": "Interface"
             }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Interface",
+            "binary": {
+              "left": "server_name",
+              "operator": "+",
+              "right": "interface"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
           }
         }
       ],
@@ -317,22 +361,44 @@
       "title": "Interface Configuration",
       "transformations": [
         {
+          "id": "joinByField",
+          "options": {
+            "byField": "interface",
+            "mode": "outer"
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "__name__": true,
               "instance": true,
+              "interface": true,
               "job": true
             },
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
               "Value": "Port",
-              "instance": "Instance",
-              "interface": "Interface",
-              "server_name": "Server"
+              "server_name": "Interface"
             }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Interface",
+            "binary": {
+              "left": "server_name",
+              "operator": "+",
+              "right": "interface"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
           }
         }
       ],
@@ -933,8 +999,24 @@
               "endpoint": "Endpoint",
               "interface": "Interface",
               "public_key": "Public Key",
-              "server_name": "Server Name"
+              "server_name": "Interface"
             }
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Interface",
+            "binary": {
+              "left": "server_name",
+              "operator": "+",
+              "right": "interface"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "replaceFields": true
           }
         }
       ],

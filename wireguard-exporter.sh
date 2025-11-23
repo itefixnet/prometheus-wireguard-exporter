@@ -16,49 +16,10 @@ CONFIG_FILE="${SCRIPT_DIR}/config.sh"
 WIREGUARD_INTERFACE="${WIREGUARD_INTERFACE:-}"
 WIREGUARD_DOCKER_CONTAINER="${WIREGUARD_DOCKER_CONTAINER:-}"  # Docker container name (if WireGuard runs in container)
 METRICS_PREFIX="${METRICS_PREFIX:-wireguard}"
-STATE_FILE="${STATE_FILE:-/var/lib/wireguard-exporter/state}"
-CACHE_TTL="${CACHE_TTL:-60}"
 
 # Logging function
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >&2
-}
-
-# Initialize state directory and file
-init_state() {
-    local state_dir
-    state_dir="$(dirname "$STATE_FILE")"
-    log "Using state file: $STATE_FILE"
-    
-    if [[ ! -d "$state_dir" ]]; then
-        mkdir -p "$state_dir" 2>/dev/null || {
-            log "WARNING: Cannot create state directory $state_dir, using /tmp"
-            STATE_FILE="/tmp/wireguard-exporter-state"
-            log "State file changed to: $STATE_FILE"
-        }
-    fi
-    
-    if [[ ! -f "$STATE_FILE" ]]; then
-        log "Initializing new state file"
-        # Initialize state file with empty values
-        cat > "$STATE_FILE" <<EOF
-# WireGuard Exporter State File
-# This file tracks previous values for rate calculations
-EOF
-    fi
-}
-
-# Load state from file
-load_state() {
-    if [[ -f "$STATE_FILE" ]]; then
-        source "$STATE_FILE"
-    fi
-}
-
-# Save state to file
-save_state() {
-    # State is saved dynamically as needed
-    :
 }
 
 # Helper function to execute wg commands (supports Docker containers)
@@ -356,20 +317,6 @@ test_connection() {
         done <<< "$interfaces"
     fi
     
-    # Check state directory
-    local state_dir
-    state_dir="$(dirname "$STATE_FILE")"
-    if [[ ! -d "$state_dir" ]]; then
-        log "WARNING: State directory does not exist: $state_dir"
-        if mkdir -p "$state_dir" 2>/dev/null; then
-            log "SUCCESS: Created state directory"
-        else
-            log "WARNING: Cannot create state directory, will use /tmp"
-        fi
-    else
-        log "SUCCESS: State directory exists: $state_dir"
-    fi
-    
     if [[ $errors -eq 0 ]]; then
         log "Configuration test completed successfully"
         return 0
@@ -382,15 +329,8 @@ test_connection() {
 # Handle command line arguments
 case "${1:-collect}" in
     "collect"|"metrics"|"")
-        # Initialize and load state before collecting metrics
-        init_state
-        load_state
-        
         # Collect and output metrics
         collect_metrics
-        
-        # Save state after collecting metrics
-        save_state
         ;;
     "test")
         test_connection
@@ -411,7 +351,6 @@ case "${1:-collect}" in
         echo "  WIREGUARD_INTERFACE        - Specific interface to monitor (default: all interfaces)"
         echo "  WIREGUARD_DOCKER_CONTAINER - Docker container name running WireGuard (optional)"
         echo "  METRICS_PREFIX             - Metrics prefix (default: wireguard)"
-        echo "  STATE_FILE                 - State file for persistent data (default: /var/lib/wireguard-exporter/state)"
         ;;
     *)
         log "ERROR: Unknown command: $1"

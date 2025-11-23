@@ -28,6 +28,7 @@ A lightweight, bash-based Prometheus exporter for WireGuard VPN statistics. This
 - `wireguard-tools` package installed
 - `socat` package installed
 - Prometheus server for scraping metrics
+- Grafana (optional, for visualization)
 - Root access or CAP_NET_ADMIN capability
 
 ### Basic Installation
@@ -243,6 +244,31 @@ scrape_configs:
     scrape_interval: 30s
     metrics_path: /metrics
 ```
+
+## Grafana Dashboard
+
+A pre-built Grafana dashboard is included in `grafana-dashboard.json` with panels for:
+
+- **Interface Status**: Real-time up/down status
+- **Total Peers**: Number of configured peers
+- **Listen Port**: Interface configuration
+- **Time Since Last Handshake**: Connection freshness with color thresholds
+- **Peer Traffic Rate**: Real-time bandwidth usage per peer (upload/download)
+- **Peer Traffic Total**: Cumulative data transferred
+- **Peer Details Table**: Comprehensive peer information with endpoints, allowed IPs, and statistics
+
+### Import Dashboard
+
+1. Open Grafana web interface
+2. Go to **Dashboards** → **Import**
+3. Upload `grafana-dashboard.json` or paste its contents
+4. Select your Prometheus datasource
+5. Click **Import**
+
+The dashboard includes template variables for filtering by:
+- **Instance**: Select specific exporter instances
+- **Interface**: Filter by WireGuard interface (wg0, wg1, etc.)
+- **Peer**: View specific peers or all
 
 ### Example Grafana Queries
 

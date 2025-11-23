@@ -720,7 +720,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\", server_name=~\"$server_name\"} * 1000",
+          "expr": "wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\"} * 1000",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -734,7 +734,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\", server_name=~\"$server_name\"}",
+          "expr": "wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -749,7 +749,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\", server_name=~\"$server_name\"}",
+          "expr": "wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -905,33 +905,6 @@
         "options": [],
         "query": {
           "query": "label_values(wireguard_interface_up{instance=~\"$instance\"}, interface)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\"}, server_name)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Server Name",
-        "multi": true,
-        "name": "server_name",
-        "options": [],
-        "query": {
-          "query": "label_values(wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\"}, server_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,

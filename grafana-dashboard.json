@@ -89,7 +89,7 @@
           ],
           "show": false
         },
-        "showHeader": true
+        "showHeader": false
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -214,7 +214,7 @@
           ],
           "show": false
         },
-        "showHeader": true
+        "showHeader": false
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -339,7 +339,7 @@
           ],
           "show": false
         },
-        "showHeader": true
+        "showHeader": false
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -884,7 +884,7 @@
           ],
           "show": false
         },
-        "showHeader": true,
+        "showHeader": false,
         "sortBy": []
       },
       "pluginVersion": "10.0.0",

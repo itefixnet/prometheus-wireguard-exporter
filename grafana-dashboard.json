@@ -395,7 +395,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "irate(wireguard_peer_receive_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}[5m])",
+          "expr": "irate(wireguard_peer_receive_bytes_total{interface=~\"$interface\"}[5m])",
           "legendFormat": "{{public_key}} received",
           "range": true,
           "refId": "A"
@@ -406,7 +406,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "irate(wireguard_peer_transmit_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}[5m])",
+          "expr": "irate(wireguard_peer_transmit_bytes_total{interface=~\"$interface\"}[5m])",
           "legendFormat": "{{public_key}} sent",
           "range": true,
           "refId": "B"
@@ -498,7 +498,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "wireguard_peer_receive_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}",
+          "expr": "wireguard_peer_receive_bytes_total{interface=~\"$interface\"}",
           "legendFormat": "{{public_key}} received",
           "range": true,
           "refId": "A"
@@ -509,7 +509,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "wireguard_peer_transmit_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}",
+          "expr": "wireguard_peer_transmit_bytes_total{interface=~\"$interface\"}",
           "legendFormat": "{{public_key}} sent",
           "range": true,
           "refId": "B"
@@ -640,7 +640,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"} * 1000",
+          "expr": "wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\"} * 1000",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -654,7 +654,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"}",
+          "expr": "wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -669,7 +669,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"}",
+          "expr": "wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -792,33 +792,6 @@
         "options": [],
         "query": {
           "query": "label_values(wireguard_interface_up{instance=~\"$instance\"}, interface)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\"}, public_key)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Peer",
-        "multi": true,
-        "name": "peer",
-        "options": [],
-        "query": {
-          "query": "label_values(wireguard_peer_latest_handshake_seconds{instance=~\"$instance\", interface=~\"$interface\"}, public_key)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,

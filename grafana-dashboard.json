@@ -101,9 +101,9 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "wireguard_interface_up{instance=~\"$instance\", interface=~\"$interface\"}",
+          "expr": "wireguard_interface_up{instance=~\"$instance\", interface=~\"$interface\"} + on(instance, interface, server_name) group_left(listen_port) (wireguard_interface_listen_port * 0)",
           "instant": true,
-          "legendFormat": "{{server_name}} / {{interface}}",
+          "legendFormat": "{{server_name}} / {{interface}} / {{listen_port}}",
           "range": false,
           "refId": "A"
         }

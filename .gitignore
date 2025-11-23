@@ -1,0 +1,20 @@
+# State files
+state
+*.state
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

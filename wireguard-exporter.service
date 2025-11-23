@@ -1,0 +1,29 @@
+[Unit]
+Description=WireGuard Prometheus Exporter
+Documentation=https://github.com/itefixnet/prometheus-wireguard-exporter
+After=network.target wg-quick.target
+
+[Service]
+Type=simple
+User=wireguard-exporter
+Group=wireguard-exporter
+EnvironmentFile=/opt/wireguard-exporter/wireguard-exporter.conf
+WorkingDirectory=/opt/wireguard-exporter
+ExecStart=/opt/wireguard-exporter/http-server.sh start
+ExecStop=/opt/wireguard-exporter/http-server.sh stop
+Restart=on-failure
+RestartSec=10
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/wireguard-exporter
+
+# Capabilities needed to read WireGuard stats
+AmbientCapabilities=CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_ADMIN
+
+[Install]
+WantedBy=multi-user.target

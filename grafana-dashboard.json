@@ -111,42 +111,35 @@
       "title": "Interface Status",
       "transformations": [
         {
-          "id": "joinByField",
-          "options": {
-            "byField": "interface",
-            "mode": "outer"
-          }
-        },
-        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "__name__": true,
               "instance": true,
-              "interface": true,
               "job": true
             },
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
               "Value": "Status",
-              "server_name": "Interface"
+              "interface": "Interface",
+              "server_name": "Server"
             }
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "calculateField",
           "options": {
             "alias": "Interface",
-            "binary": {
-              "left": "server_name",
-              "operator": "+",
-              "right": "interface"
-            },
-            "mode": "binary",
+            "mode": "reduceRow",
             "reduce": {
-              "reducer": "sum"
+              "include": ["Server", "Interface"],
+              "reducer": "allValues"
             },
             "replaceFields": true
           }
@@ -236,42 +229,35 @@
       "title": "Peers per Interface",
       "transformations": [
         {
-          "id": "joinByField",
-          "options": {
-            "byField": "interface",
-            "mode": "outer"
-          }
-        },
-        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "__name__": true,
               "instance": true,
-              "interface": true,
               "job": true
             },
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
               "Value": "Peers",
-              "server_name": "Interface"
+              "interface": "Interface",
+              "server_name": "Server"
             }
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "calculateField",
           "options": {
             "alias": "Interface",
-            "binary": {
-              "left": "server_name",
-              "operator": "+",
-              "right": "interface"
-            },
-            "mode": "binary",
+            "mode": "reduceRow",
             "reduce": {
-              "reducer": "sum"
+              "include": ["Server", "Interface"],
+              "reducer": "allValues"
             },
             "replaceFields": true
           }
@@ -361,42 +347,35 @@
       "title": "Interface Port",
       "transformations": [
         {
-          "id": "joinByField",
-          "options": {
-            "byField": "interface",
-            "mode": "outer"
-          }
-        },
-        {
           "id": "organize",
           "options": {
             "excludeByName": {
               "Time": true,
               "__name__": true,
               "instance": true,
-              "interface": true,
               "job": true
             },
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
               "Value": "Port",
-              "server_name": "Interface"
+              "interface": "Interface",
+              "server_name": "Server"
             }
           }
+        },
+        {
+          "id": "merge",
+          "options": {}
         },
         {
           "id": "calculateField",
           "options": {
             "alias": "Interface",
-            "binary": {
-              "left": "server_name",
-              "operator": "+",
-              "right": "interface"
-            },
-            "mode": "binary",
+            "mode": "reduceRow",
             "reduce": {
-              "reducer": "sum"
+              "include": ["Server", "Interface"],
+              "reducer": "allValues"
             },
             "replaceFields": true
           }
@@ -999,7 +978,7 @@
               "endpoint": "Endpoint",
               "interface": "Interface",
               "public_key": "Public Key",
-              "server_name": "Interface"
+              "server_name": "Server"
             }
           }
         },
@@ -1007,14 +986,10 @@
           "id": "calculateField",
           "options": {
             "alias": "Interface",
-            "binary": {
-              "left": "server_name",
-              "operator": "+",
-              "right": "interface"
-            },
-            "mode": "binary",
+            "mode": "reduceRow",
             "reduce": {
-              "reducer": "sum"
+              "include": ["Server", "Interface"],
+              "reducer": "allValues"
             },
             "replaceFields": true
           }

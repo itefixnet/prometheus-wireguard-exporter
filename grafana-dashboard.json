@@ -693,21 +693,12 @@
               "instance": true,
               "job": true
             },
-            "indexByName": {
-              "Time": 0,
-              "interface": 1,
-              "public_key": 2,
-              "endpoint": 3,
-              "allowed_ips": 4,
-              "Value #A": 5,
-              "Value #B": 6,
-              "Value #C": 7
-            },
+            "includeByName": {},
+            "indexByName": {},
             "renameByName": {
               "Value #A": "Last Handshake",
               "Value #B": "Received",
               "Value #C": "Transmitted",
-              "allowed_ips": "Allowed IPs",
               "endpoint": "Endpoint",
               "interface": "Interface",
               "public_key": "Public Key"

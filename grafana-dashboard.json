@@ -127,22 +127,6 @@
               "server_name": "Server"
             }
           }
-        },
-        {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Interface",
-            "mode": "reduceRow",
-            "reduce": {
-              "include": ["Server", "Interface"],
-              "reducer": "allValues"
-            },
-            "replaceFields": true
-          }
         }
       ],
       "type": "table"
@@ -245,22 +229,6 @@
               "server_name": "Server"
             }
           }
-        },
-        {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Interface",
-            "mode": "reduceRow",
-            "reduce": {
-              "include": ["Server", "Interface"],
-              "reducer": "allValues"
-            },
-            "replaceFields": true
-          }
         }
       ],
       "type": "table"
@@ -362,22 +330,6 @@
               "interface": "Interface",
               "server_name": "Server"
             }
-          }
-        },
-        {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Interface",
-            "mode": "reduceRow",
-            "reduce": {
-              "include": ["Server", "Interface"],
-              "reducer": "allValues"
-            },
-            "replaceFields": true
           }
         }
       ],
@@ -980,18 +932,6 @@
               "public_key": "Public Key",
               "server_name": "Server"
             }
-          }
-        },
-        {
-          "id": "calculateField",
-          "options": {
-            "alias": "Interface",
-            "mode": "reduceRow",
-            "reduce": {
-              "include": ["Server", "Interface"],
-              "reducer": "allValues"
-            },
-            "replaceFields": true
           }
         }
       ],

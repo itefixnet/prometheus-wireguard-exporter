@@ -147,7 +147,7 @@
       },
       "id": 1,
       "options": {
-        "cellHeight": "sm",
+        "cellHeight": "md",
         "footer": {
           "countRows": false,
           "fields": "",
@@ -254,7 +254,13 @@
               "job": true
             },
             "includeByName": {},
-            "indexByName": {},
+            "indexByName": {
+              "server_name": 0,
+              "interface": 1,
+              "Value #A (lastNotNull)": 2,
+              "Value #B (lastNotNull)": 3,
+              "Value #C (lastNotNull)": 4
+            },
             "renameByName": {
               "Value #A (lastNotNull)": "Status",
               "Value #B (lastNotNull)": "Peers",

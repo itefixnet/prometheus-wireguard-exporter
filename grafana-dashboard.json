@@ -73,7 +73,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 8,
         "x": 0,
         "y": 0
@@ -89,7 +89,7 @@
           ],
           "show": false
         },
-        "showHeader": false
+        "showHeader": true
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -175,7 +175,7 @@
         ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 8,
         "x": 8,
         "y": 0
@@ -191,7 +191,7 @@
           ],
           "show": false
         },
-        "showHeader": false
+        "showHeader": true
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -277,7 +277,7 @@
         ]
       },
       "gridPos": {
-        "h": 4,
+        "h": 8,
         "w": 8,
         "x": 16,
         "y": 0
@@ -293,7 +293,7 @@
           ],
           "show": false
         },
-        "showHeader": false
+        "showHeader": true
       },
       "pluginVersion": "10.0.0",
       "targets": [
@@ -393,7 +393,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 12
+        "y": 16
       },
       "id": 5,
       "options": {
@@ -486,7 +486,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 4
+        "y": 8
       },
       "id": 8,
       "options": {
@@ -579,7 +579,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 12
+        "y": 16
       },
       "id": 6,
       "options": {
@@ -671,7 +671,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 4
+        "y": 8
       },
       "id": 9,
       "options": {
@@ -802,7 +802,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 24
       },
       "id": 7,
       "options": {
@@ -815,7 +815,7 @@
           ],
           "show": false
         },
-        "showHeader": false,
+        "showHeader": true,
         "sortBy": []
       },
       "pluginVersion": "10.0.0",

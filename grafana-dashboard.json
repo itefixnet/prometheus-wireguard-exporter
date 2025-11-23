@@ -395,7 +395,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"}[$__rate_interval])",
+          "expr": "irate(wireguard_peer_receive_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}[5m])",
           "legendFormat": "{{public_key}} received",
           "range": true,
           "refId": "A"
@@ -406,7 +406,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"}[$__rate_interval])",
+          "expr": "irate(wireguard_peer_transmit_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}[5m])",
           "legendFormat": "{{public_key}} sent",
           "range": true,
           "refId": "B"
@@ -498,7 +498,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "wireguard_peer_receive_bytes_total{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"}",
+          "expr": "wireguard_peer_receive_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}",
           "legendFormat": "{{public_key}} received",
           "range": true,
           "refId": "A"
@@ -509,7 +509,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "wireguard_peer_transmit_bytes_total{instance=~\"$instance\", interface=~\"$interface\", public_key=~\"$peer\"}",
+          "expr": "wireguard_peer_transmit_bytes_total{interface=~\"$interface\", public_key=~\"$peer\"}",
           "legendFormat": "{{public_key}} sent",
           "range": true,
           "refId": "B"

@@ -99,7 +99,6 @@ The exporter can be configured using environment variables or configuration file
 | `LISTEN_PORT` | `9586` | HTTP server port |
 | `LISTEN_ADDRESS` | `0.0.0.0` | HTTP server bind address |
 | `METRICS_PREFIX` | `wireguard` | Prometheus metrics prefix |
-| `STATE_FILE` | `/var/lib/wireguard-exporter/state` | State file location |
 | `MAX_CONNECTIONS` | `10` | Maximum concurrent HTTP connections |
 | `TIMEOUT` | `30` | Request timeout in seconds |
 

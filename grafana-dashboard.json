@@ -685,6 +685,43 @@
           "options": {}
         },
         {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Value #A": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Value #B": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Value #C": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "endpoint": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "interface": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "public_key": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {
@@ -696,9 +733,9 @@
             "includeByName": {},
             "indexByName": {},
             "renameByName": {
-              "Value #A": "Last Handshake",
-              "Value #B": "Received",
-              "Value #C": "Transmitted",
+              "Value #A (lastNotNull)": "Last Handshake",
+              "Value #B (lastNotNull)": "Received",
+              "Value #C (lastNotNull)": "Transmitted",
               "endpoint": "Endpoint",
               "interface": "Interface",
               "public_key": "Public Key"

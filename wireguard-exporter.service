@@ -7,6 +7,8 @@ After=network.target wg-quick.target
 Type=simple
 User=wireguard-exporter
 Group=wireguard-exporter
+# If using Docker mode, uncomment to allow access to /var/run/docker.sock
+# SupplementaryGroups=docker
 EnvironmentFile=/opt/wireguard-exporter/wireguard-exporter.conf
 WorkingDirectory=/opt/wireguard-exporter
 ExecStart=/opt/wireguard-exporter/http-server.sh start

@@ -77,6 +77,9 @@ sudo cp wireguard-exporter.service /etc/systemd/system/
 sudo chown -R wireguard-exporter:wireguard-exporter /opt/wireguard-exporter
 sudo chmod +x /opt/wireguard-exporter/*.sh
 
+# Optional: required when using Docker container mode
+sudo usermod -aG docker wireguard-exporter
+
 # Enable and start service
 sudo systemctl daemon-reload
 sudo systemctl enable wireguard-exporter
@@ -149,6 +152,7 @@ export WIREGUARD_INTERFACE="wg0"               # Optional: specific interface
 - Container must be running
 - `wg` command available in the container
 - User running exporter must have Docker permissions
+- If running as systemd user `wireguard-exporter`, add it to the `docker` group
 
 **Finding your container name:**
 ```bash
@@ -330,6 +334,7 @@ wireguard_peer_connected{interface="wg0"}
 6. **Docker Container Issues**:
    - **Container not found**: Verify container name with `docker ps --format '{{.Names}}'`
    - **Permission denied**: Add your user to docker group: `sudo usermod -aG docker $USER`
+  - **Systemd service cannot access container**: Add `wireguard-exporter` user to docker group: `sudo usermod -aG docker wireguard-exporter`
    - **wg command not in container**: Ensure wireguard-tools is installed in the container
    - **Cannot connect to Docker daemon**: Check Docker service: `sudo systemctl status docker`
   - **Exporter says "Host mode" after setting container var**: run with `sudo -E` or pass the variable inline with sudo
@@ -343,6 +348,10 @@ wireguard_peer_connected{interface="wg0"}
    # Check exporter can access container
   sudo -E ./wireguard-exporter.sh test
   WIREGUARD_DOCKER_CONTAINER=<container> sudo ./wireguard-exporter.sh test
+
+  # If using systemd service user
+  sudo usermod -aG docker wireguard-exporter
+  sudo systemctl restart wireguard-exporter
    ```
 
 ### Logging

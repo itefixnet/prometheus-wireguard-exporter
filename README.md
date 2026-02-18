@@ -123,11 +123,13 @@ If WireGuard is running inside a Docker container, you can monitor it from the h
 export WIREGUARD_DOCKER_CONTAINER=wireguard
 
 # Test connectivity
-sudo ./wireguard-exporter.sh test
+sudo -E ./wireguard-exporter.sh test
 
 # Start the exporter (runs on host, monitors container)
 ./http-server.sh start
 ```
+
+If you use `sudo`, include `-E` so exported variables like `WIREGUARD_DOCKER_CONTAINER` are preserved.
 
 **How it works:**
 - The exporter uses `docker exec <container> wg show` instead of `wg show`
@@ -330,6 +332,7 @@ wireguard_peer_connected{interface="wg0"}
    - **Permission denied**: Add your user to docker group: `sudo usermod -aG docker $USER`
    - **wg command not in container**: Ensure wireguard-tools is installed in the container
    - **Cannot connect to Docker daemon**: Check Docker service: `sudo systemctl status docker`
+  - **Exporter says "Host mode" after setting container var**: run with `sudo -E` or pass the variable inline with sudo
    
    ```bash
    # Debug Docker container
@@ -338,7 +341,8 @@ wireguard_peer_connected{interface="wg0"}
    docker exec <container> which wg
    
    # Check exporter can access container
-   WIREGUARD_DOCKER_CONTAINER=<container> ./wireguard-exporter.sh test
+  sudo -E ./wireguard-exporter.sh test
+  WIREGUARD_DOCKER_CONTAINER=<container> sudo ./wireguard-exporter.sh test
    ```
 
 ### Logging

@@ -180,8 +180,13 @@ collect_peer_metrics() {
 # Function to get WireGuard version
 get_version_info() {
     local version
-    
-    if command -v wg >/dev/null 2>&1; then
+
+    if [[ -n "$WIREGUARD_DOCKER_CONTAINER" ]]; then
+        if command -v docker >/dev/null 2>&1; then
+            version=$(docker exec "$WIREGUARD_DOCKER_CONTAINER" wg --version 2>&1 | head -1 | awk '{print $2}' || echo "unknown")
+            format_metric "version_info" "1" "version=\"${version}\"" "WireGuard version information"
+        fi
+    elif command -v wg >/dev/null 2>&1; then
         version=$(wg --version 2>&1 | head -1 | awk '{print $2}' || echo "unknown")
         format_metric "version_info" "1" "version=\"${version}\"" "WireGuard version information"
     fi
@@ -289,7 +294,7 @@ test_connection() {
         # Check if we have permission to run wg
         if ! wg show &>/dev/null; then
             log "WARNING: Cannot execute 'wg show'. You may need to run as root or with CAP_NET_ADMIN"
-            log "Try: sudo $0 test"
+            log "Try: sudo -E $0 test"
             errors=$((errors + 1))
         else
             log "SUCCESS: Can execute 'wg show'"
@@ -312,7 +317,7 @@ test_connection() {
             [[ -z "$interface" ]] && continue
             
             local peers_count
-            peers_count=$(wg show "$interface" peers 2>/dev/null | wc -l || echo "0")
+            peers_count=$(wg_exec show "$interface" peers | wc -l || echo "0")
             log "Interface $interface has $peers_count peer(s)"
         done <<< "$interfaces"
     fi
